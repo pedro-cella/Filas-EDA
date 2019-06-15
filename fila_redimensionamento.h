@@ -3,8 +3,8 @@
 
 void cria_fila();
 int enfileira(int c);
-int desenfileira(int *c);
+int desenfileira();
 int fila_vazia();
 int fila_cheia();
-
+void imprimir_fila();
 #endif
