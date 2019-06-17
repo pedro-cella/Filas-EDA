@@ -59,9 +59,8 @@ int desenfileira(int *c)
     {
         *c = fila[p++];
         if(p == N) p = 0;
-        return 1;
+        return *c;
     }
-    return 0;
 }
 
 int fila_vazia()
