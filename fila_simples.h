@@ -2,8 +2,10 @@
 #define fila_int_h
 
 void cria_fila();
-void enfileira(int y);
-int desenfileira();
+int enfileira(int y);
+int desenfileira(int *c);
 int fila_vazia();
 int fila_cheia();
+void imprimir_fila();	
+
 #endif
