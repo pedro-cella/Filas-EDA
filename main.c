@@ -16,7 +16,7 @@ int main()
     printf("Escolha a opca desejada:\n");
     printf("1- Inserir n elementos na fila.\n2- Remover n elementos na fila.\n3- Imprimir a fila.\n4- Sair.\nOpção: ");
     scanf("%d", &opcao);
-    // system("clear");
+    system("clear");
     switch(opcao)
       {
       case 1:
@@ -25,12 +25,6 @@ int main()
 	ret = 1;
 	for(i = 0; i < N && ret; i++)
 	  {
-	    /* if(fila_cheia())//\**ERRO**  */
-	    /* { */
-	    /*     //printf("Não foi possivel inserir %d numeros pois a fila encheu.\n",N-i); */
-	    /* 	redimensiona();//<-------ERRO! */
-	    /* 	break; */
-	    /* } */
 	    printf("Inserido o %dº elemento:\n",i+1);
 	    scanf("%d", &numero);
 	    if(numero >= 0 && numero <= 999)
@@ -58,13 +52,13 @@ int main()
 	scanf("%d", &N);
 	for(i = 0; i < N && ret; i++)
 	  {
-	    ret = desenfileira( &elem );
+            ret = desenfileira(&elem);
 	    if(ret == 0) {
 	      printf("Não foi possivel remover %d numeros pois a fila está vazia.\n",N-i);
 	      break;
 	    }
 	    else {
-		printf("Removido o numero: %d.\n",elem);
+		printf("Removido o numero: %d.\n",ret);
 	    }
 	  }
 	break;
@@ -73,6 +67,5 @@ int main()
 	imprimir_fila();
 	break;
       }
-
   }while(opcao != 4);
 }
