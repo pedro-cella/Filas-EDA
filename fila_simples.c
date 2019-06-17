@@ -13,7 +13,9 @@ void cria_fila()
 
 int enfileira(int y)
 {
-    fila_simples[u++] = y;
+    if(fila_cheia()) return 0;
+    else fila_simples[u++] = y;
+    return 1;
 }
 
 int desenfileira(int *c)
