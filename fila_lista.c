@@ -7,9 +7,13 @@ struct elem
     struct elem *prox;
 }celula;
 
-celula *fi;
-fi = malloc(sizeof(celula));
-fi -> prox = fi
+celula *lista;
+
+void cria_fila()
+{
+    lista = malloc(sizeof(celula));
+    lista -> prox = lista;
+}
 
 int enfileira(int y, celula *fi)
 {
