@@ -13,10 +13,12 @@ void cria_fila()
 
 int enfileira(int y)
 {
-    fila_simples[u++] = y;
+    if(fila_cheia()) return 0;
+    else fila_simples[u++] = y;
+    return 1;
 }
 
-int desenfileira()
+int desenfileira(int *c)
 {
     return fila_simples[p++];
 }
@@ -42,7 +44,8 @@ void imprimir_fila(){
     printf("\n");
 
     printf("|");
-    for(int i = 0;i < N;i++){
+    for(int i = 0;i < N;i++)
+    {
         printf(" %03d |", fila_simples[i]);
     }
 
@@ -53,24 +56,34 @@ void imprimir_fila(){
         printf("-----+");
     printf("\n");
 
-    for(int i = 0;i <= u;i++){
-        if(i == p){
+    for(int i = 0;i <= u;i++)
+    {
+        if(i == p)
+    {
             printf("   p");
-            for(int i = p; i <= N; i++){
-                if(i == u){
+            for(int i = p; i <= N; i++)
+        {
+                if(i == u)
+        {
                     printf("u");
                 }
-                else{
-                    printf("      ");
-                }
+                    else
+            {
+                        printf("      ");
+                    }
             }
             break;
         }
-        else{
+        else
+    {
             printf("      ");
         }
     }
 
     printf("\n");
+}
+
+void freeFila(){
+    
 }
 

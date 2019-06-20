@@ -7,7 +7,7 @@ static int N, p, u;
 
 void cria_fila()
 {
-    N = 10;
+    N = 5;
     fila = malloc(N * sizeof(int));
     p = 0;
     u = 0;
@@ -16,50 +16,51 @@ void cria_fila()
 int redimensiona() {
 
     int i, j;
-    printf("fila_redimensionamento\n");
+    //printf("fila_redimensionamento\n");
     fila = realloc( fila, 2 * N * sizeof(int) );
     if ( fila == NULL ){
-        return 0;
+        return -1;
     }
 
-
-    if ( u-1 < N-p ) {
+    if ( u != N-1 ) {
+      if ( u-1 < N-p ) {
         for ( i = N, j = 0; j < u; i++, j++ ) {
-            fila[i] = fila[j];
+      fila[i] = fila[j];
         }
         u = N+u;
-    }
-    else{
+      }
+      else{
         for ( i = p, j = N+p; i < N; i++, j++ ) {
-            fila[j] = fila[i];
+      fila[j] = fila[i];
         }
         p = N+p;
+      }
     }
     N *= 2;
     return 1;
-
 }
 
 int enfileira(int c)
 {
     int ret = 1;
-    if(u == N){
-       ret = redimensiona(); 
-    } 
-    if(ret) fila[u++] = c;
+    if(fila_cheia())
+      ret = redimensiona();
+
+    if(ret) {
+      fila[u++] = c;
+      if ( u == N ) u = 0;
+    }
     return ret;
 }
 
-int desenfileira()
+int desenfileira(int *c)
 {
-    int *c;
     if(!fila_vazia())
     {
         *c = fila[p++];
         if(p == N) p = 0;
         return *c;
     }
-    return 0;
 }
 
 int fila_vazia()
@@ -140,4 +141,8 @@ void imprimir_fila(){
     }
 
     printf("\n");
+}
+
+void freeFila(){
+    free(fila);
 }
