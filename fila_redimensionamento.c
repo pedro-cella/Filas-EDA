@@ -16,7 +16,7 @@ void cria_fila()
 int redimensiona() {
 
     int i, j;
-    printf("fila_redimensionamento\n");
+    printf("Redimensionamento realizado !\n");
     fila = realloc( fila, 2 * N * sizeof(int) );
     if ( fila == NULL ){
         return -1;
