@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "fila_lista.h"
+#include "fila_simples.h"
 
 int main()
 {
@@ -55,8 +55,9 @@ int main()
 	      printf("Não foi possivel remover %d numeros pois a fila está vazia.\n",N-i);
 	      break;
 	    }
-	    else {
-		printf("Removido o numero: %d.\n",desenfileira());
+	    else{
+		ret = desenfileira();    
+		printf("Removido o numero: %d.\n",ret);
 	    }
 	  }
 	break;
