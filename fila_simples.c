@@ -18,7 +18,7 @@ int enfileira(int y)
     return 1;
 }
 
-int desenfileira(int *c)
+int desenfileira()
 {
     return fila_simples[p++];
 }
