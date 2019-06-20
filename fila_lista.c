@@ -17,7 +17,7 @@ static lista *ListaCabeca;
 void cria_fila()
 {
 	ListaCabeca = malloc(sizeof(lista));
-	ListaCabeca->prox = NULL;
+	ListaCabeca->prox = ListaCabeca;
    
 }
 
@@ -25,10 +25,11 @@ int enfileira(int y)
 {
    lista *nova;
    nova = malloc (sizeof (lista));
-   nova->prox = ListaCabeca->prox; 
-   nova->dado = y;
-   ListaCabeca->prox = nova;   
-   return 1;
+   if(nova==NULL) return -1; 
+   nova->prox = ListaCabeca->prox;
+   ListaCabeca->prox = nova;
+   ListaCabeca->dado = y;   
+   ListaCabeca = nova;
 }
 
 int desenfileira()
@@ -44,7 +45,7 @@ int desenfileira()
 
 int fila_vazia()
 {
-    return ListaCabeca->prox == NULL;
+    return ListaCabeca->prox == ListaCabeca;
 
 }
 
@@ -54,31 +55,33 @@ int fila_cheia()
 }
 
 void imprimir_fila(){
-     printf("+");
+     
+printf("+");
      lista *impressao;
-    for (impressao = ListaCabeca -> prox; impressao != NULL; impressao = impressao->prox){
-    	printf("-----+");
+    for (impressao = ListaCabeca -> prox; impressao->prox != ListaCabeca->prox; impressao = impressao->prox){
+        printf("-----+");
     }
     printf("\n");
     printf("|");
-
-   	impressao = ListaCabeca->prox;
    
-    while(impressao != NULL){
+impressao =  ListaCabeca->prox;
 
-    	printf(" %03d |", impressao->dado);
-    	impressao = impressao->prox;
+    while(impressao->prox != ListaCabeca->prox){
+
+        printf(" %03d |", impressao->dado);
+        impressao = impressao->prox;
     }
 
     printf("\n");
     printf("+");
 
-    for (impressao = ListaCabeca -> prox; impressao != NULL; impressao = impressao->prox){
-    	printf("-----+");
+    for (impressao = ListaCabeca -> prox; impressao->prox != ListaCabeca->prox; impressao = impressao->prox){
+        printf("-----+");
     }
 
     printf("\n");
 }
+
 
 void freeFila(){
     free(ListaCabeca);
