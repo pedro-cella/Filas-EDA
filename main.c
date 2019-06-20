@@ -1,14 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "fila_redimensionamento.h"
+#include "fila_lista.h"
 
 int main()
 {
   int elem, ret;
   
-  if(fila_vazia()) {
-    cria_fila();
-  }
+  cria_fila();
     
   int opcao, N, numero, i;
   char certeza;
@@ -53,13 +51,12 @@ int main()
 	scanf("%d", &N);
 	for(i = 0; i < N && ret; i++)
 	  {
-            ret = desenfileira(&elem);
-	    if(ret == 0) {
+	    if(fila_vazia()) {
 	      printf("Não foi possivel remover %d numeros pois a fila está vazia.\n",N-i);
 	      break;
 	    }
 	    else {
-		printf("Removido o numero: %d.\n",ret);
+		printf("Removido o numero: %d.\n",desenfileira());
 	    }
 	  }
 	break;
